@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <button id="theme-toggle">🌓</button>
+
+  <div class="container result-container">
+    <h1 class="fade-in">🌾 Recommended Crop</h1>
+    <p class="result-text fade-in">Based on your input, the best crop to grow is:</p>
+    <h2 class="crop-name fade-in">{{ crop | capitalize }}</h2>
+
+    <a href="{{ url_for('home') }}" class="predict-btn back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </div>
+
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    toggle.onclick = () => {
+      document.body.classList.toggle("light-mode");
+    };
+
+    window.onload = () => {
+      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('show'));
+    };
+  </script>
+</body>
+</html>

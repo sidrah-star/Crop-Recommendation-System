@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crop Recommendation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <button id="theme-toggle">🌓</button>
+
+  <div class="container">
+    <h1>🌱 Crop Recommendation</h1>
+    <p>Enter soil & weather conditions to find the best crop to grow.</p>
+    
+    <!-- ✅ Model Accuracy Display -->
+    <p><strong>Model Accuracy:</strong> {{ accuracy }}%</p>
+
+    <form action="/predict" method="post" class="fade-in">
+      <div class="input-box">
+        <i class="fas fa-flask"></i>
+        <input type="text" name="N" placeholder="Nitrogen (N)" required>
+      </div>
+
+      <div class="input-box">
+        <i class="fas fa-vial"></i>
+        <input type="text" name="P" placeholder="Phosphorus (P)" required>
+      </div>
+
+      <div class="input-box">
+        <i class="fas fa-prescription-bottle"></i>
+        <input type="text" name="K" placeholder="Potassium (K)" required>
+      </div>
+
+      <div class="input-box">
+        <i class="fas fa-temperature-high"></i>
+        <input type="text" name="temperature" placeholder="Temperature (°C)" required>
+      </div>
+
+      <div class="input-box">
+        <i class="fas fa-water"></i>
+        <input type="text" name="humidity" placeholder="Humidity (%)" required>
+      </div>
+
+      <div class="input-box">
+        <i class="fas fa-seedling"></i>
+        <input type="text" name="ph" placeholder="Soil pH" required>
+      </div>
+
+      <div class="input-box">
+        <i class="fas fa-cloud-rain"></i>
+        <input type="text" name="rainfall" placeholder="Rainfall (mm)" required>
+      </div>
+
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <button type="submit" class="predict-btn">🌾 Predict Crop</button>
+        <button type="reset" class="predict-btn" style="background-color: #dc3545;">🗑️ Clear</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    toggle.onclick = () => {
+      document.body.classList.toggle("light-mode");
+    };
+
+    window.onload = () => {
+      document.querySelector('.fade-in').classList.add('show');
+    };
+  </script>
+</body>
+</html>
